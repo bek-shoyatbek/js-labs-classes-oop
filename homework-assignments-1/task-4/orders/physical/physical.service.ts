@@ -1,27 +1,26 @@
-import { ICustomer } from "../../customers/customer.interface";
-import { IProduct } from "../../products/product.interface";
+import { Customer } from "../../customers/customer.service";
+import { Product } from "../../products/product.service";
 import { Order } from "../order.service";
-import { IPhysicalOrder } from "./physical.interface";
 
 export class PhysicalOrder extends Order {
-    customer: ICustomer;
-    products: IProduct[];
-    totalPrice: number;
-    shippingAddress: string;
-    deliveryDate: Date;
-    constructor(physicalOrder: IPhysicalOrder) {
-        super(physicalOrder);
-        this.customer = physicalOrder.customer;
-        this.products = physicalOrder.products;
-        this.totalPrice = physicalOrder.totalPrice;
-        this.shippingAddress = physicalOrder.shippingAddress;
-        this.deliveryDate = physicalOrder.deliveryDate;
-    }
+  shippingAddress: string;
+  deliveryDate: number;
+  constructor(customer: Customer, cart: Product[]) {
+    super({
+      customer,
+      products: cart,
+      totalPrice: 0,
+    });
 
-    calculateTotalPrice(): number {
-        this.products.forEach(product => {
-            this.totalPrice += product.price;
-        })
-        return this.totalPrice;
-    }
+    this.shippingAddress = customer.address;
+    this.deliveryDate = new Date().getDate();
+    this.products = cart;
+  }
+
+  calculateTotalPrice(): number {
+    this.products.forEach((product) => {
+      this.totalPrice += product.getPrice();
+    });
+    return this.totalPrice;
+  }
 }

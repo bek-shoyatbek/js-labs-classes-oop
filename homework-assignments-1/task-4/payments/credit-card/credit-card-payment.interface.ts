@@ -1,6 +1,6 @@
-import { IPayment } from "../payment.interface";
+import { IPaymentDetails } from "../payment.details";
 
-export interface ICreditCardPayment extends IPayment {
-    cardNumber: number;
-    expirationDate: Date;
+export interface ICreditCardPaymentDetails extends IPaymentDetails {
+  cardNumber: string;
+  expirationDate: string;
 }

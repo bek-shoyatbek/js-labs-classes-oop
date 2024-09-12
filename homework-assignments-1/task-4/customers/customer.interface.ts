@@ -1,11 +1,6 @@
-import { IProduct } from "../products/product.interface";
+import { Product } from "../products/product.service";
 
 export interface ICustomer {
-    name: string;
-    email: string;
-    cart: IProduct[];
-    address: string;
-
-    addToCart(product: IProduct): boolean;
-    removeFromCart(product: IProduct): boolean;
+  addToCart(product: Product): boolean;
+  removeFromCart(product: Product): boolean;
 }
