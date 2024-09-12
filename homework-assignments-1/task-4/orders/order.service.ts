@@ -2,9 +2,10 @@ import { ICustomer } from "../customers/customer.interface";
 import { Product } from "../products/product.service";
 import { IOrder } from "./order.interface";
 import { IOrderDetails } from "./order-details.interface";
+import { Customer } from "../customers/customer.service";
 
 export abstract class Order implements IOrder {
-  customer: ICustomer;
+  customer: Customer;
   products: Product[];
   totalPrice: number;
 

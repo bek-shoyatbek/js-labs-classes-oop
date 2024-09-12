@@ -14,9 +14,18 @@ export class Customer implements ICustomer {
     this.address = customer.address;
   }
   addToCart(product: Product): boolean {
-    throw new Error("Method not implemented.");
+    this.cart.push(product);
+    return true;
   }
   removeFromCart(product: Product): boolean {
-    throw new Error("Method not implemented.");
+    const productIndex = this.cart.indexOf(product);
+    if (productIndex > -1) {
+      this.cart.splice(productIndex, 1);
+      product.reduceStock(1);
+      return true;
+    } else {
+      console.error("Product is not in the cart.");
+      return false;
+    }
   }
 }
