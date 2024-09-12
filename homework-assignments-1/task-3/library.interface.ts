@@ -1,6 +1,6 @@
-import { IBook } from "./book.interface";
+import { IBookDetails } from "./book-details.interface";
 
 export interface ILibrary {
-    addBook(book: IBook): boolean;
-    removeBookByISBN(isbn: number): boolean;
+  addBook(book: IBookDetails): boolean;
+  removeBookByISBN(isbn: number): boolean;
 }
