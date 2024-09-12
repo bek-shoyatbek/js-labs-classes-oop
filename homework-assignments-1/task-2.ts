@@ -1,9 +1,8 @@
-class User {
+export class User {
     private username: string;
     private password: string;
 
-    // ! This method is for just testing my validateLogin method
-    public signUp(username: string, password: string) {
+    constructor(username: string, password: string) {
         this.username = username;
         this.password = password;
     }
@@ -11,10 +10,8 @@ class User {
     public validateLogin(inputPassword: string) {
         const isValidUser = this.verifyPassword(inputPassword, this.password);
         if (isValidUser) {
-            console.info("Valid User");
             return true;
         }
-        console.info("Invalid User!");
         return false;
     }
 
