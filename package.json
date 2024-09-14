@@ -4,6 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "tsc",
+    "start:task-1": "tsc && node ./dist/homework-assignments-1/main.js",
+    "start:task-2": "tsc && node ./dist/library-management-system/main.js",
     "test": "jest"
   },
   "keywords": [],
